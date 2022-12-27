@@ -14,6 +14,7 @@ class homepage extends StatefulWidget {
 }
 
 class _homepageState extends State<homepage> {
+  int _selectedIndex = 0;
   List<String> listOfStrings = [
     'Shirts',
     'Pants',
@@ -231,7 +232,45 @@ class _homepageState extends State<homepage> {
             itemCount: 7,
           ),
         ),
+
+
+
       ])),
+
+      selectedItemFromNavBar(),
+      bottomNavigationBar: BottomNavigationBar(
+        items: const [
+          BottomNavigationBarItem(
+            icon: Icon(Icons.home),
+            label: 'Home',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.business),
+            label: 'Business',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.school),
+            label: 'School',
+          ),
+        ],
+        currentIndex: _selectedIndex,
+        selectedItemColor: Colors.amber[800],
+        onTap: (index) {
+          setState(() {
+            _selectedIndex = index;
+          });
+        },
+      ),
     );
   }
+    Widget selectedItemFromNavBar() {
+    switch (_selectedIndex) {
+      case 0:
+        return homepage();
+      case 1:
+        return homepage();
+      default:
+        return homepage();
+    }
 }
+
